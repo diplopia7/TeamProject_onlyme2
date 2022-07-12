@@ -1,63 +1,28 @@
-{% extends 'project.html' %}
+{% extends 'layout/base.html' %}
+{% load static %}
+
 {% block title %}member/join{% endblock %}
 
 {% block style %}
     <style>
-        #wrapper { display:flex;}
-        #wrapper a {font-size: 20px; font-weight: bold; text-decoration: none;
-        color: white;  }
-        #wrapper a:hover{color:orangered}
-        header {background-image:url('/static/img/background.jpg'); height:140px; width: 100%  }
+        #joform {
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:10%;
+            position:relative;
+        }
 
+        #jobtn {
+            margin-left:25px;
+            margin-top:20px
+        }
 
-        a:link {color: black; text-decoration:none}
-        a:visited{color: black; text-decoration:underline}
-        a:hover {color: orangered; text-decoration:none}
-        a:active {color: orangered; text-decoration:none }
-
-        header img:hover {
-        width: 89%;
-        height: 100%;
-        transform:scale(110%);
-        transition: transform.3s;
-         }
-
-        #qm2 img:hover {
-        width: 102%;
-        height: 100%;
-        transform:scale(110%);
-        transition: transform.3s;
-         }
-
-        #mmenu img:hover {
-        width: 89%;
-        height: 100%;
-        transform:scale(110%);
-        transition: transform.3s;
-         }
-
-        #logo {width: 515px; height:115px; float:left; margin-top:15px }
-        #gamestart {list-style:none; position:absolute; left:43%; margin-top: 10px; }
-        #gamestart img { width:250px; height: 120px;   }
-        #qm1 { position: absolute; display:flex; left: 84%; margin-top: 15px; height:47px;}
-        #qm2 { position: absolute; display:flex; left: 84%; margin-top: 15px; height:47px;}
-        #qm img { height:45px; position:absolute}
-        #qmenu1 img { margin-top:-1px;}
-        #qmenu2 { margin-left: 150px;}
-        #qmenu3 img { margin-top:-0.5px;}
-        #qmenu4 { margin-left: 24px;}
-
-        nav{ width:100%; position:relative;  background: silver; padding: 5px 15px; height:120px;}
-        nav div  { position:relative; margin-left: 3.5%; display:flex; font-weight:bold;
-                list-style: none; margin-top: 8px; margin-bottom: 8px}
-        nav img { height: 75px; position:relative}
-        #mmenu2 { left : 23%;}
-        #mmenu3 { left : 43%; bottom:2px}
-
-        #joform { display: table; margin-left: auto; margin-right: auto; margin-top:10%; position:relative; }
-        #jobtn { margin-left:25px; margin-top:20px }
-
-        .error{position:relative; left:150px; color:red; font-weight: bold}
+        .error {
+            position:relative;
+            left:150px; color:red;
+            font-weight: bold
+        }
     </style>
 {% endblock %}
 
@@ -65,29 +30,26 @@
 {% if request.session.userid %}
     <script>location.href='/';</script>
 {% endif %}
-
-<h2>회원가입</h2>
-<div id="joform">
-<form name="joinok" method="post" id="joinok">
-    <div id='jomsg' style="width:700px; background-color: lightblue; text-align: center">
-        <br>
-        <h2>{{ form.name }} 님</h2>
-       <h2>회원가입을 환영합니다!</h2>
-        <h3>게임 플레이 및 다양한 서비스를 이용하실 수 있습니다.</h3>
-        <h3>지금바로 전장으로 가보시죠!</h3>
-        <br>
+    <div id="joform">
+        <form name="joinok" method="post" id="joinok">
+            <div id='jomsg' style="width:700px; background-color: lightblue; text-align: center">
+                <br>
+                <h2>{{ form.name }} 님</h2>
+                <h2>회원가입을 환영합니다!</h2>
+                <h3>게임 플레이 및 다양한 서비스를 이용하실 수 있습니다.</h3>
+                <h3>지금바로 전장으로 가보시죠!</h3>
+                <br>
+            </div>
+            <div id="jobtn">
+                <p class="button" style="margin-left: 200px">
+                    <a href="/login"><img src="/static/img/login.gif" alt="로그인" /></a>
+                    <a href="/"><img src="/static/img/movemain.gif" alt="메인으로 이동" /></a>
+                </p>
+            </div>
+        </form>
     </div>
-    <div id="jobtn">
-        <p class="button" style="margin-left: 200px">
-            <a href="/login"><img src="/static/img/login.gif" alt="로그인" /></a>
-            <a href="/"><img src="/static/img/movemain.gif" alt="메인으로 이동" /></a>
-        </p>
-    </div>
-</form>
-</div>
 {% endblock %}
 
 {% block jscript %}
-
 {% endblock %}
 
